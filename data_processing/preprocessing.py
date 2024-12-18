@@ -18,3 +18,14 @@ def preprocess_data(X_train, X_test):
     X_test = scaler.transform(X_test)
 
     return X_train, X_test
+
+def normalize_data(X_train, X_test):
+    X_train[X_train == -999999.99] = 0
+    X_test[X_test == -999999.99] = 0
+
+    # Data normalization
+    scaler = StandardScaler()
+    X_train = scaler.fit_transform(X_train)
+    X_test = scaler.transform(X_test)
+
+    return X_train, X_test
