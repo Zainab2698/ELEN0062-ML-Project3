@@ -3,3 +3,5 @@ Figures/
 slides.pdf
 statement.pdf
 example_submission.csv
+*.pyc
+.vscode

@@ -12,7 +12,7 @@ from data_observation.overview import summarize_data
 from data_processing.preprocessing import preprocess_data
 from data_processing.loader import load_data
 from feature_engineering.extractor import extract_combined_features
-from modeling.evaluation import train_evaluate
+from modeling.evaluation import train_evaluate_dt
 
 
 
@@ -37,7 +37,7 @@ if __name__ == '__main__':
     print(f"Test Features Shape: {X_test_features.shape}")
 
     print("Evaluating Models on Traing Data")
-    train_evaluate(X_train_features, y_train, X_test_features)
+    train_evaluate_dt(X_train_features, y_train, X_test_features)
     #write_submission(y_test)
 
     #clf = KNeighborsClassifier(n_neighbors=1)

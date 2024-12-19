@@ -1,10 +1,11 @@
 import numpy as np
 
+N_SENSORS = 31
+TIME_STEPS = 512
 def extract_basic_features(X):
     n_samples, n_features = X.shape
-    n_sensors = 31
-    time_steps = 512
-    reshaped = X.reshape(n_samples, n_sensors, time_steps)
+    
+    reshaped = X.reshape(n_samples, N_SENSORS, TIME_STEPS)
     mean = np.mean(reshaped, axis=2)
     std = np.std(reshaped, axis=2)
     max_val = np.max(reshaped, axis=2)
@@ -14,11 +15,9 @@ def extract_basic_features(X):
 # Extract frequency features using FFT for each sensor's time series
 def extract_frequency_features(X):
     n_samples, n_features = X.shape
-    n_sensors = 31
-    time_steps = 512
-
+    
     # Reshape data to (n_samples, n_sensors, time_steps)
-    reshaped = X.reshape(n_samples, n_sensors, time_steps)
+    reshaped = X.reshape(n_samples, N_SENSORS, TIME_STEPS)
 
     # Compute FFT and take the magnitude of the first half of frequencies
     fft_features = np.abs(np.fft.fft(reshaped, axis=2))[:, :, :256]
