@@ -29,3 +29,17 @@ def normalize_data(X_train, X_test):
     X_test = scaler.transform(X_test)
 
     return X_train, X_test
+
+def normalize_data_with_mean(X_train, X_test):
+    for X in [X_train, X_test]:
+        for i in range(X.shape[1]):
+            valid_values = X[:, i] != -999999.99
+            feature_mean = np.mean(X[valid_values, i]) if np.any(valid_values) else 0
+            X[~valid_values, i] = feature_mean
+
+    # Data normalization
+    scaler = StandardScaler()
+    X_train = scaler.fit_transform(X_train)
+    X_test = scaler.transform(X_test)
+
+    return X_train, X_test
