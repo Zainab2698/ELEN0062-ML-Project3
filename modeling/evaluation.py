@@ -48,10 +48,10 @@ def train_evaluate_NeuralNet(X_train, y_train, X_test):
     print(classification_report(y_val_split, y_val_pred))
 
     # Generating the submission file for this model
-    print(f"\nGenerating submission file for Decision Tree")
+    print(f"\nGenerating submission file for Neural Network")
     best_model.fit(X_train, y_train)  # Retrain on the full training set
     y_test_pred = best_model.predict(X_test)  # Predict on the test set
-    write_submission(y_test_pred, submission_path="submission_decision_tree.csv")
+    write_submission(y_test_pred, submission_path="submission_neural_network.csv")
 
     return best_model, best_params
 
